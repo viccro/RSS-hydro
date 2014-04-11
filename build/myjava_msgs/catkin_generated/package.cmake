@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "myjava_msgs")
+set(myjava_msgs_MAINTAINER "team5 <team5@todo.todo>")
+set(myjava_msgs_DEPRECATED "")
+set(myjava_msgs_VERSION "0.1.0")
+set(myjava_msgs_BUILD_DEPENDS "lab5_msgs" "rosjava_bootstrap" "rosjava_build_tools" "rosjava_messages" "rss_msgs" "rss_msgs" "lab5_msgs")
+set(myjava_msgs_RUN_DEPENDS )
+set(myjava_msgs_BUILDTOOL_DEPENDS "catkin")

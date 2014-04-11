@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.github.rosjava.rosjava_pkg</groupId>
+  <artifactId>uorc_utils</artifactId>
+  <version>0.1.0</version>
+  <versioning>
+    <versions>
+      <version>0.1.0</version>
+    </versions>
+    <lastUpdated>20140411014747</lastUpdated>
+  </versioning>
+</metadata>

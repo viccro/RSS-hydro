@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "rosjava_pubsub_pkg")
+set(rosjava_pubsub_pkg_MAINTAINER "team5 <team5@todo.todo>")
+set(rosjava_pubsub_pkg_DEPRECATED "")
+set(rosjava_pubsub_pkg_VERSION "0.1.0")
+set(rosjava_pubsub_pkg_BUILD_DEPENDS "rosjava_build_tools")
+set(rosjava_pubsub_pkg_RUN_DEPENDS )
+set(rosjava_pubsub_pkg_BUILDTOOL_DEPENDS "catkin")

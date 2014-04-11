@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Export-Package: com.github.rosjava.my_java_library.Dude;version="0.1.0
+ "
+Bundle-Version: 0.1.0
+Tool: Bnd-2.1.0.20130426-122213
+Bundle-Name: my_java_library
+Bnd-LastModified: 1396824977000
+Created-By: 1.6.0_30 (Sun Microsystems Inc.)
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.github.rosjava.rosjava_pubsub_pkg.my_java_lib
+ rary
+

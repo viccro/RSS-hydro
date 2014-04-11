@@ -1,0 +1,8 @@
+prefix=/home/team5/RSS-hydro/install
+
+Name: foo_msgs
+Description: Description of foo_msgs
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/team5/RSS-hydro/install/lib 
+Requires: 

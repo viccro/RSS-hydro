@@ -1,0 +1,7 @@
+set(_CATKIN_CURRENT_PACKAGE "lab6_msgs")
+set(lab6_msgs_MAINTAINER "team5 <team5@todo.todo>")
+set(lab6_msgs_DEPRECATED "")
+set(lab6_msgs_VERSION "0.0.0")
+set(lab6_msgs_BUILD_DEPENDS "lab5_msgs" "rss_msgs")
+set(lab6_msgs_RUN_DEPENDS "lab5_msgs" "rss_msgs")
+set(lab6_msgs_BUILDTOOL_DEPENDS "catkin")

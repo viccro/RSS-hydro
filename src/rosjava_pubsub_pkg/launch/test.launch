@@ -1,0 +1,6 @@
+<launch>
+
+<node pkg="rosjava_pubsub_pkg" name="talk" type="my_pub_sub_tutorial" args="com.github.rosjava_pubsub_pkg.my_pub_sub_tutorial.Talker" output="screen"> </node>
+<node pkg="rosjava_pubsub_pkg" name="lis" type="my_pub_sub_tutorial" args="com.github.rosjava_pubsub_pkg.my_pub_sub_tutorial.Listener" output="screen"> </node>
+
+</launch>
