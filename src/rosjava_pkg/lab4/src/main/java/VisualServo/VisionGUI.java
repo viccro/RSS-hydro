@@ -1673,7 +1673,7 @@ public class VisionGUI extends JPanel implements NodeMain {
 				byte[] rgbData;
 				if (reverseRGB) {
 					rgbData = Image.RGB2BGR(message.getData(),
-							(int) message.getWidth(), (int) message.getWeight());
+							(int) message.getWidth(), (int) message.getHeight());
 				}
 				else {
 					rgbData = message.getData();
@@ -1752,20 +1752,24 @@ public class VisionGUI extends JPanel implements NodeMain {
 	protected void testGraphicsHook() throws InterruptedException {
 	}
 
-/*	@Override
+	@Override
 	public void onShutdown(Node arg0) {
 		if(node != null) {
 			node.shutdown();
 		}
 	}
 
-	@Override
+//	@Override
 	public void onShutdownComplete(ConnectedNode node) {
 	}
-*/
+
 	@Override
 	public GraphName getDefaultNodeName() {
 		return GraphName.of("rss/visiongui");
 	}
+
+    @Override
+    public void onError(Node node, Throwable error) {
+    }
 
 }
