@@ -146,6 +146,104 @@ depend:
 	cd /home/team5/RSS-hydro/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
+# Convenience name for target.
+rss_msgs/CMakeFiles/rss_msgs_gencpp.dir/rule:
+	cd /home/team5/RSS-hydro/build && $(MAKE) -f CMakeFiles/Makefile2 rss_msgs/CMakeFiles/rss_msgs_gencpp.dir/rule
+.PHONY : rss_msgs/CMakeFiles/rss_msgs_gencpp.dir/rule
+
+# Convenience name for target.
+rss_msgs_gencpp: rss_msgs/CMakeFiles/rss_msgs_gencpp.dir/rule
+.PHONY : rss_msgs_gencpp
+
+# fast build rule for target.
+rss_msgs_gencpp/fast:
+	cd /home/team5/RSS-hydro/build && $(MAKE) -f rss_msgs/CMakeFiles/rss_msgs_gencpp.dir/build.make rss_msgs/CMakeFiles/rss_msgs_gencpp.dir/build
+.PHONY : rss_msgs_gencpp/fast
+
+# Convenience name for target.
+rss_msgs/CMakeFiles/rss_msgs_generate_messages.dir/rule:
+	cd /home/team5/RSS-hydro/build && $(MAKE) -f CMakeFiles/Makefile2 rss_msgs/CMakeFiles/rss_msgs_generate_messages.dir/rule
+.PHONY : rss_msgs/CMakeFiles/rss_msgs_generate_messages.dir/rule
+
+# Convenience name for target.
+rss_msgs_generate_messages: rss_msgs/CMakeFiles/rss_msgs_generate_messages.dir/rule
+.PHONY : rss_msgs_generate_messages
+
+# fast build rule for target.
+rss_msgs_generate_messages/fast:
+	cd /home/team5/RSS-hydro/build && $(MAKE) -f rss_msgs/CMakeFiles/rss_msgs_generate_messages.dir/build.make rss_msgs/CMakeFiles/rss_msgs_generate_messages.dir/build
+.PHONY : rss_msgs_generate_messages/fast
+
+# Convenience name for target.
+rss_msgs/CMakeFiles/rss_msgs_generate_messages_cpp.dir/rule:
+	cd /home/team5/RSS-hydro/build && $(MAKE) -f CMakeFiles/Makefile2 rss_msgs/CMakeFiles/rss_msgs_generate_messages_cpp.dir/rule
+.PHONY : rss_msgs/CMakeFiles/rss_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+rss_msgs_generate_messages_cpp: rss_msgs/CMakeFiles/rss_msgs_generate_messages_cpp.dir/rule
+.PHONY : rss_msgs_generate_messages_cpp
+
+# fast build rule for target.
+rss_msgs_generate_messages_cpp/fast:
+	cd /home/team5/RSS-hydro/build && $(MAKE) -f rss_msgs/CMakeFiles/rss_msgs_generate_messages_cpp.dir/build.make rss_msgs/CMakeFiles/rss_msgs_generate_messages_cpp.dir/build
+.PHONY : rss_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+rss_msgs/CMakeFiles/rss_msgs_generate_messages_lisp.dir/rule:
+	cd /home/team5/RSS-hydro/build && $(MAKE) -f CMakeFiles/Makefile2 rss_msgs/CMakeFiles/rss_msgs_generate_messages_lisp.dir/rule
+.PHONY : rss_msgs/CMakeFiles/rss_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+rss_msgs_generate_messages_lisp: rss_msgs/CMakeFiles/rss_msgs_generate_messages_lisp.dir/rule
+.PHONY : rss_msgs_generate_messages_lisp
+
+# fast build rule for target.
+rss_msgs_generate_messages_lisp/fast:
+	cd /home/team5/RSS-hydro/build && $(MAKE) -f rss_msgs/CMakeFiles/rss_msgs_generate_messages_lisp.dir/build.make rss_msgs/CMakeFiles/rss_msgs_generate_messages_lisp.dir/build
+.PHONY : rss_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+rss_msgs/CMakeFiles/rss_msgs_generate_messages_py.dir/rule:
+	cd /home/team5/RSS-hydro/build && $(MAKE) -f CMakeFiles/Makefile2 rss_msgs/CMakeFiles/rss_msgs_generate_messages_py.dir/rule
+.PHONY : rss_msgs/CMakeFiles/rss_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+rss_msgs_generate_messages_py: rss_msgs/CMakeFiles/rss_msgs_generate_messages_py.dir/rule
+.PHONY : rss_msgs_generate_messages_py
+
+# fast build rule for target.
+rss_msgs_generate_messages_py/fast:
+	cd /home/team5/RSS-hydro/build && $(MAKE) -f rss_msgs/CMakeFiles/rss_msgs_generate_messages_py.dir/build.make rss_msgs/CMakeFiles/rss_msgs_generate_messages_py.dir/build
+.PHONY : rss_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+rss_msgs/CMakeFiles/rss_msgs_genlisp.dir/rule:
+	cd /home/team5/RSS-hydro/build && $(MAKE) -f CMakeFiles/Makefile2 rss_msgs/CMakeFiles/rss_msgs_genlisp.dir/rule
+.PHONY : rss_msgs/CMakeFiles/rss_msgs_genlisp.dir/rule
+
+# Convenience name for target.
+rss_msgs_genlisp: rss_msgs/CMakeFiles/rss_msgs_genlisp.dir/rule
+.PHONY : rss_msgs_genlisp
+
+# fast build rule for target.
+rss_msgs_genlisp/fast:
+	cd /home/team5/RSS-hydro/build && $(MAKE) -f rss_msgs/CMakeFiles/rss_msgs_genlisp.dir/build.make rss_msgs/CMakeFiles/rss_msgs_genlisp.dir/build
+.PHONY : rss_msgs_genlisp/fast
+
+# Convenience name for target.
+rss_msgs/CMakeFiles/rss_msgs_genpy.dir/rule:
+	cd /home/team5/RSS-hydro/build && $(MAKE) -f CMakeFiles/Makefile2 rss_msgs/CMakeFiles/rss_msgs_genpy.dir/rule
+.PHONY : rss_msgs/CMakeFiles/rss_msgs_genpy.dir/rule
+
+# Convenience name for target.
+rss_msgs_genpy: rss_msgs/CMakeFiles/rss_msgs_genpy.dir/rule
+.PHONY : rss_msgs_genpy
+
+# fast build rule for target.
+rss_msgs_genpy/fast:
+	cd /home/team5/RSS-hydro/build && $(MAKE) -f rss_msgs/CMakeFiles/rss_msgs_genpy.dir/build.make rss_msgs/CMakeFiles/rss_msgs_genpy.dir/build
+.PHONY : rss_msgs_genpy/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -158,6 +256,13 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... rss_msgs_gencpp"
+	@echo "... rss_msgs_generate_messages"
+	@echo "... rss_msgs_generate_messages_cpp"
+	@echo "... rss_msgs_generate_messages_lisp"
+	@echo "... rss_msgs_generate_messages_py"
+	@echo "... rss_msgs_genlisp"
+	@echo "... rss_msgs_genpy"
 	@echo "... test"
 .PHONY : help
 

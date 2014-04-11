@@ -1,0 +1,193 @@
+package VisualServo;
+
+import java.util.concurrent.ArrayBlockingQueue;
+
+import org.ros.message.MessageListener;
+import org.ros.message.rss_msgs.MotionMsg;
+import org.ros.message.rss_msgs.BlobMsg;
+import org.ros.namespace.GraphName;
+import org.ros.node.Node;
+import org.ros.node.NodeMain;
+import org.ros.node.topic.Publisher;
+import org.ros.node.topic.Subscriber;
+
+/**
+ * 
+ * @author previous TA's, prentice, vona
+ *
+ */
+public class VisualServo implements NodeMain, Runnable {
+
+	private static final int width = 160;
+
+	private static final int height = 120;
+
+	Publisher<MotionMsg> motionPub;	//Initialize a publisher of type MotionMsg
+	private float transVel;		
+	private float rotVel;
+	private float KpFwd = 2.0f;	//Gains for proportional velocity controllers
+	private float KpRot = 0.01f;
+	
+	Publisher<BlobMsg> blobPub;
+
+	/**
+	 * <p>The blob tracker.</p>
+	 **/
+	private BlobTracking blobTrack = null;
+
+	private VisionGUI gui;
+	private ArrayBlockingQueue<byte[]> visionImage = new ArrayBlockingQueue<byte[]>(
+			1);
+
+	protected boolean firstUpdate = true;
+
+	public Subscriber<org.ros.message.sensor_msgs.Image> vidSub;
+	public Subscriber<org.ros.message.rss_msgs.OdometryMsg> odoSub;
+
+	/**
+	 * <p>Create a new VisualServo object.</p>
+	 */
+	public VisualServo() {
+
+		setInitialParams();
+
+		gui = new VisionGUI();
+	}
+
+	protected void setInitialParams() {
+
+	}
+
+	/**
+	 * <p>Handle a CameraMessage. Perform blob tracking and
+	 * servo robot towards target.</p>
+	 * 
+	 * @param rawImage a received camera message
+	 */
+	public void handle(byte[] rawImage) {
+
+		visionImage.offer(rawImage);
+	}
+
+	@Override
+	public void run() {
+		while (true) {
+			Image src = null;
+			try {
+				src = new Image(visionImage.take(), width, height);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+				continue;
+			}
+
+			Image dest = new Image(src);
+
+			blobTrack.apply(src, dest);
+
+			// update newly formed vision message
+			gui.setVisionImage(dest.toArray(), width, height);
+
+			blobTrack.blobFix();
+			//Publish known information about blob
+			BlobMsg msgBlob= new BlobMsg();
+			
+			msgBlob.centroidX = (float) blobTrack.centroidX;
+			msgBlob.centroidY = (float) blobTrack.centroidY;
+			msgBlob.targetArea = (float) blobTrack.targetArea;
+			msgBlob.targetRange = (float) blobTrack.targetRange;
+			msgBlob.targetBearing = (float) blobTrack.targetBearing;
+
+			blobPub.publish(msgBlob);
+			System.out.printf("Blob message was published.\n");
+
+			//Proportional controllers
+			if (blobTrack.targetDetected == true)
+			{
+				if (blobTrack.targetRange > 3){ //cut out noise
+					transVel = (float)0;
+					rotVel = (float)0;
+				}
+				else{
+					transVel = (float)(-1*KpFwd * (.5 - blobTrack.targetRange));    //Half meter from ball
+					rotVel = (float)(KpRot * (0 - blobTrack.targetBearing));        //Ball centered on img
+				}
+				// publish velocity messages to move the robot towards the target
+//				System.out.printf("Chasing the blob.\tSetting velocity: %f %f\n", transVel, rotVel); 
+
+				MotionMsg msgVS= new MotionMsg();
+				msgVS.translationalVelocity = transVel;
+				msgVS.rotationalVelocity = rotVel;	
+				motionPub.publish(msgVS);
+			}
+		}
+	}
+
+	/**
+	 * <p>
+	 * Run the VisualServo process
+	 * </p>
+	 * 
+	 * @param node optional command-line argument containing hostname
+	 */
+	@Override
+	public void onStart(Node node) {
+		blobTrack = new BlobTracking(width, height);
+
+		// set parameters on blobTrack as you desire
+		// initialize the ROS publication to command/Motors
+		motionPub = node.newPublisher("command/Motors", "rss_msgs/MotionMsg"); //Set publisher configurations
+		blobPub   = node.newPublisher("info/blob", "rss_msgs/BlobMsg");
+
+		final boolean reverseRGB = node.newParameterTree().getBoolean("reverse_rgb", false);
+
+		vidSub = node.newSubscriber("/rss/video", "sensor_msgs/Image");
+		vidSub.addMessageListener(new MessageListener<org.ros.message.sensor_msgs.Image>() {
+			@Override
+			public void onNewMessage(org.ros.message.sensor_msgs.Image message) {
+				byte[] rgbData;
+				if (reverseRGB) {
+					rgbData = Image.RGB2BGR(message.data,
+							(int) message.width, (int) message.height);
+				}
+				else {
+					rgbData = message.data;
+				}
+				assert ((int) message.width == width);
+				assert ((int) message.height == height);
+				handle(rgbData);
+			}
+		});
+
+		odoSub = node.newSubscriber("/rss/odometry", "rss_msgs/OdometryMsg");
+		odoSub
+		.addMessageListener(new MessageListener<org.ros.message.rss_msgs.OdometryMsg>() {
+			@Override
+			public void onNewMessage(
+					org.ros.message.rss_msgs.OdometryMsg message) {
+				if (firstUpdate) {
+					firstUpdate = false;
+					gui.resetWorldToView(message.x, message.y);
+				}
+				gui.setRobotPose(message.x, message.y, message.theta);
+			}
+		});
+		Thread runningStuff = new Thread(this);
+		runningStuff.start();
+	}
+
+	@Override
+	public void onShutdown(Node node) {
+		if (node != null) {
+			node.shutdown();
+		}
+	}
+
+	@Override
+	public void onShutdownComplete(Node node) {
+	}
+
+	@Override
+	public GraphName getDefaultNodeName() {
+		return new GraphName("rss/visualservo");
+	}
+}

@@ -2,7 +2,7 @@ prefix=/home/team5/RSS-hydro/install
 
 Name: rss_msgs
 Description: Description of rss_msgs
-Version: 0.0.0
-Cflags: 
+Version: 0.1.0
+Cflags: -I/home/team5/RSS-hydro/install/include
 Libs: -L/home/team5/RSS-hydro/install/lib 
-Requires: 
+Requires: message_runtime

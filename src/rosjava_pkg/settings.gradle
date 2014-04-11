@@ -15,3 +15,5 @@
  */
 
 include 'uorc_utils'
+include 'rss_msgs'
+include 'lab4'
